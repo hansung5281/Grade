@@ -1,21 +1,32 @@
 package com.maple.grade;
 
 public class Calculator {
-	protected char calculator(int score)
-	{
-		char eScore = 0;
+	protected void calculator(int score[]) {
+
+		char[] eScore = new char[5];
+		int totalScore = 0; float average = 0; 
 		
-		if(score >= 90)
-			eScore = 'A';
-		else if(score < 90 && score >=80)
-			eScore = 'B';
-		else if(score < 80 && score >=70)
-			eScore = 'C';
-		else if(score < 60 && score >=50)
-			eScore = 'D';
-		else if(score < 50)
-			eScore = 'F';
+		//학점 계산
+		for(int i = 0; i < 5; i++) {
+			if (score[i] >= 90)
+				eScore[i] = 'A';
+			else if (score[i] < 90 && score[i] >= 80)
+				eScore[i] = 'B';
+			else if (score[i] < 80 && score[i] >= 70)
+				eScore[i] = 'C';
+			else if (score[i] < 70 && score[i] >= 60)
+				eScore[i] = 'D';
+			else if (score[i] < 60)
+				eScore[i] = 'F';
+		}
 		
-		return eScore;
+		//총점, 평점계산
+		for(int i=0; i<5; i++)
+		{
+			totalScore += score[i];
+		}
+		average = totalScore / 5;
+		
+		Printer printer = new Printer(eScore, totalScore ,average);
 	}
 }
